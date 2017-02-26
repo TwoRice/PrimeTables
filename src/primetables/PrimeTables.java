@@ -12,7 +12,14 @@ package primetables;
 public class PrimeTables {
 
     public static void main(String[] args) {
-
+        int [] primes = PrimeGenerator.generatePrimes(100);
+        String[][] primeTable = generatePrimeTable(primes);
+    }
+    
+    public static String[][] generatePrimeTable(int[] primes){
+        String[][] primeTable = new String[primes.length+1][primes.length+1];
+        
+        return primeTable;
     }
     
 }
