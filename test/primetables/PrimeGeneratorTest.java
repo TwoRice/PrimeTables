@@ -45,7 +45,18 @@ public class PrimeGeneratorTest {
         int[] expResult = {11, 13, 17, 19, 23, 29};
         int[] result = Arrays.copyOfRange(PrimeGenerator.generatePrimes(endIndex), startIndex, endIndex);
         
-        System.out.println("generatePrimes");
+        System.out.println("generatePrimes_Small");
+        
+        assertArrayEquals(expResult, result);
+    }
+    
+    @Test
+    public void testGeneratePrimes_Large(){
+        int n;
+        int[] expResult = readPrimesFromFile(n);
+        int[] result = PrimeGenerator.generatePrimes(n);
+        
+        System.out.println("generatePrime_Large");
         
         assertArrayEquals(expResult, result);
     }
