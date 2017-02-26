@@ -12,7 +12,7 @@ package primetables;
 public class PrimeTables {
 
     public static void main(String[] args) {
-        int [] primes = PrimeGenerator.generatePrimes(3);
+        int [] primes = PrimeGenerator.generatePrimes(100);
         int[][] primeTable = generatePrimeTable(primes);
         prettyPrintTable(primeTable);
     }
@@ -36,7 +36,24 @@ public class PrimeTables {
     }
     
     public static void prettyPrintTable(int[][] primeTable){
-          
+        
+        int maxNoOfDigits = (int) Math.ceil(Math.log10(primeTable[primeTable[0].length-1][primeTable[0].length-1]));
+        
+        System.out.print("|");
+        System.out.format("% " + maxNoOfDigits*2 + "d", 1);
+        
+        for(int i = 0; i < primeTable[0].length-1; i++){
+            System.out.print("|");
+            System.out.format("% " + maxNoOfDigits*2 + "d", primeTable[i+1][0]);
+        }
+                
+        for(int i = 1; i < primeTable[0].length; i++){
+            System.out.println();
+            for(int j = 0; j < primeTable[0].length; j++){
+                System.out.print("|");
+                System.out.format("% " + maxNoOfDigits*2 + "d", primeTable[i][j]);
+            }        
+        }
     }
     
 }
