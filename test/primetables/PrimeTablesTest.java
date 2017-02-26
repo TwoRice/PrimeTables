@@ -21,11 +21,10 @@ public class PrimeTablesTest {
     public PrimeTablesTest() {
     }
     
-
     @Test
     public void testGeneratePrimeTable() {
         int[] primes = {2, 3, 5};
-        int[][] expResult = {{0,2,3,5}, 
+        int[][] expResult = {{1,2,3,5}, 
                             {2,4,6,10},
                             {3,6,9,15},
                             {5,10,15,25}
@@ -35,7 +34,5 @@ public class PrimeTablesTest {
         System.out.println("generatePrimeTable");
 
         assertArrayEquals(expResult, result);
-    }
-
-    
+    }   
 }
