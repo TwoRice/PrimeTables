@@ -5,6 +5,8 @@
  */
 package primetables;
 
+import java.util.Arrays;
+
 
 public class PrimeGenerator {
 
@@ -13,7 +15,7 @@ public class PrimeGenerator {
         primes[0] = 1; primes[1] = 2; primes[2] = 3;
         
         for(int i = 5, j = 3; j <= n; i+=2){
-            if(isPrime(i)){
+            if(isPrime(Arrays.copyOfRange(primes, 2, j), i)){
                 primes[j] = i;
                 j++;
             }
@@ -22,8 +24,14 @@ public class PrimeGenerator {
         return primes;
     }
     
-    public static boolean isPrime(int candidate){
-        return false;
+    public static boolean isPrime(int[] primes, int candidate){
+        for(int i = 0; i < primes.length; i++){
+            if(candidate % primes[i] == 0){
+                return false;
+            }
+        }
+        
+        return true;
     }
     
 }
