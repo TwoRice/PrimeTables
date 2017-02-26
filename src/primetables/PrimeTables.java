@@ -5,14 +5,13 @@
  */
 package primetables;
 
-/**
- *
- * @author Big Cheesy B
- */
+import java.util.Scanner;
+
 public class PrimeTables {
 
     public static void main(String[] args) {
-        int [] primes = PrimeGenerator.generatePrimes(100);
+        int n = getInputN();
+        int [] primes = PrimeGenerator.generatePrimes(n);
         int[][] primeTable = generatePrimeTable(primes);
         prettyPrintTable(primeTable);
     }
@@ -40,7 +39,7 @@ public class PrimeTables {
         int maxNoOfDigits = (int) Math.ceil(Math.log10(primeTable[primeTable[0].length-1][primeTable[0].length-1]));
         
         System.out.print("|");
-        System.out.format("% " + maxNoOfDigits*2 + "d", 1);
+        System.out.format("%" + maxNoOfDigits*2 + "s", "");
         
         for(int i = 0; i < primeTable[0].length-1; i++){
             System.out.print("|");
@@ -54,6 +53,20 @@ public class PrimeTables {
                 System.out.format("% " + maxNoOfDigits*2 + "d", primeTable[i][j]);
             }        
         }
+    }
+    
+    public static int getInputN(){
+        Scanner scanner = new Scanner(System.in);
+        int n;
+        
+        System.out.println("Enter no of generations: ");
+        while(!scanner.hasNextInt()){
+            scanner.next();
+            System.out.println("Please only enter an integer value: ");
+        }
+        n= scanner.nextInt();
+        
+        return n;
     }
     
 }
