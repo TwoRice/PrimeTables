@@ -40,7 +40,7 @@ public class PrimeGeneratorTest {
     @Test
     public void testGeneratePrimes_Small() {
         int n = 10;
-        int[] expResult = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+        int[] expResult = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
         int[] result = PrimeGenerator.generatePrimes(n);
         
         System.out.println("generatePrimes");
@@ -51,8 +51,9 @@ public class PrimeGeneratorTest {
     @Test
     public void testIsPrime() {
         int testNo = 11;
+        int[] primes = {3, 5, 7};
         boolean expResult = true;
-        boolean result = PrimeGenerator.isPrime(testNo);
+        boolean result = PrimeGenerator.isPrime(primes, testNo);
         
         System.out.println("isPrime");
         
