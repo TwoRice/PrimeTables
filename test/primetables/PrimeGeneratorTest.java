@@ -5,6 +5,7 @@
  */
 package primetables;
 
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,9 +40,10 @@ public class PrimeGeneratorTest {
 
     @Test
     public void testGeneratePrimes_Small() {
-        int n = 10;
-        int[] expResult = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
-        int[] result = PrimeGenerator.generatePrimes(n);
+        int startIndex = 4;
+        int endIndex = 10;
+        int[] expResult = {11, 13, 17, 19, 23, 29};
+        int[] result = Arrays.copyOfRange(PrimeGenerator.generatePrimes(endIndex), startIndex, endIndex);
         
         System.out.println("generatePrimes");
         
