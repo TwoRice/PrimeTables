@@ -26,8 +26,13 @@ public class PrimeGenerator {
     
     public static boolean isPrime(int[] primes, int candidate){
         for(int i = 0; i < primes.length; i++){
-            if(candidate % primes[i] == 0){
-                return false;
+            if(candidate / primes[i] >= 3){
+                if(candidate % primes[i] == 0){
+                    return false;
+                }
+            }
+            else{
+                return true;
             }
         }
         
