@@ -11,11 +11,11 @@ import java.util.Arrays;
 public class PrimeGenerator {
 
     public static int[] generatePrimes(int n){
-        int[] primes = new int[n+1];
-        primes[0] = 1; primes[1] = 2; primes[2] = 3;
+        int[] primes = new int[n];
+        primes[0] = 2; primes[1] = 3;
         
-        for(int i = 5, j = 3; j <= n; i+=2){
-            if(isPrime(Arrays.copyOfRange(primes, 2, j), i)){
+        for(int i = 5, j = 2; j < n; i+=2){
+            if(isPrime(Arrays.copyOfRange(primes, 1, j), i)){
                 primes[j] = i;
                 j++;
             }
