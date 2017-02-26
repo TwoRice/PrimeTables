@@ -53,6 +53,9 @@ public class PrimeGeneratorTest {
         assertArrayEquals(expResult, result);
     }
     
+    /**
+     * Tests the primes are generated correctly up to a maximum of 1000000 generations
+     */
     @Test
     public void testGeneratePrimes_Large(){
         int n = 100;
@@ -76,12 +79,29 @@ public class PrimeGeneratorTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Reads up to a million primes from a selection of files 
+     */
     private int[] readPrimesFromFile(int n){
-       
-        int[] primes = new int[n];
+        //Rounds n to the nearest power of 10
+        double digits = Math.ceil(Math.log10(n));
+        int fileNo = (int) Math.pow(10, digits);
         
+        if(fileNo < 100){
+            fileNo = 100;
+        }
+        else if(fileNo > 1000000){
+            fileNo = 1000000;
+        }
+        
+        //Sets size of prime array to a max of 1 million
+        if(n > fileNo){
+            n = fileNo;
+        }
+        int[] primes = new int[n];
+                
         try{
-            Scanner scanner = new Scanner(new File("primeFiles/P-" + n + ".txt"));
+            Scanner scanner = new Scanner(new File("primeFiles/P-" + fileNo + ".txt"));
             for(int i = 0; i < n; i++){
                 primes[i] = Integer.valueOf(scanner.nextLine().split(", ")[1]);
             }
