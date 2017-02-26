@@ -8,20 +8,15 @@ package primetables;
 
 public class PrimeGenerator {
 
-    private int[] primes;
-    private int generations;
-    
-    public PrimeGenerator(int n){
-        generations = n;
-        primes = new int[generations+1];
-        primes[0] = 1; primes[1] = 2; primes[2] = 3;   
-    }
-    
-    public int[] generatePrimes(){
+        
+    public static int[] generatePrimes(int n){
+        int[] primes = new int[n+1];
+        primes[0] = 1; primes[1] = 2; primes[2] = 3;
+        
         return primes;
     }
     
-    public boolean isPrime(){
+    public static boolean isPrime(int[] primes){
         return false;
     }
     
