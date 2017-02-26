@@ -13,13 +13,18 @@ public class PrimeTables {
 
     public static void main(String[] args) {
         int [] primes = PrimeGenerator.generatePrimes(100);
-        String[][] primeTable = generatePrimeTable(primes);
+        int[][] primeTable = generatePrimeTable(primes);
+        prettyPrintTable(primeTable);
     }
     
-    public static String[][] generatePrimeTable(int[] primes){
-        String[][] primeTable = new String[primes.length+1][primes.length+1];
+    public static int[][] generatePrimeTable(int[] primes){
+        int[][] primeTable = new int[primes.length+1][primes.length+1];
         
         return primeTable;
+    }
+    
+    public static void prettyPrintTable(int[][] primeTable){
+          
     }
     
 }
