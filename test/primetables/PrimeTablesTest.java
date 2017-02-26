@@ -21,32 +21,21 @@ public class PrimeTablesTest {
     public PrimeTablesTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+
+    @Test
+    public void testGeneratePrimeTable() {
+        int[] primes = {2, 3, 5};
+        int[][] expResult = {{0,2,3,5}, 
+                            {2,4,6,10},
+                            {3,6,9,15},
+                            {5,10,15,25}
+        };
+        int[][] result = PrimeTables.generatePrimeTable(primes);
+        
+        System.out.println("generatePrimeTable");
+
+        assertArrayEquals(expResult, result);
     }
 
-    /**
-     * Test of main method, of class PrimeTables.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        PrimeTables.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
 }
