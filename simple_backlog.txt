@@ -1,0 +1,29 @@
+PART I - generating primes
+Create array of size N
+Initialise with numbers 1, 2 and 3
+construct for loop stating at 5, incrementing by i+=2, until array is full
+Check if each number in loop can be divided by each number in the array 
+(excluding the first 2)
+if not add the number to the array
+
+PART I - optimisation
+Once current number divided by current prime in array < 3, skip the rest of numbers in array
+Use threading (divide array in half and give each thread half?)
+
+PART I - tests
+check no of primes generated is correct
+check generated primes against a small array of primes
+read n primes from text file and check they are the same
+
+
+PART II - multiplicatin table
+create 2d array
+construct 2 nested for loops each counting from i = 0 to i < N+1
+make position (0,0) blank
+multiply i*j and place into position (i,j) in new array
+format table (pretty print)
+
+PART II - tests
+check size of table is correct
+check generated table against small multiplication table
+read multiplication table of size N from txt file and check it is the same
