@@ -5,7 +5,10 @@
  */
 package primetables;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,7 +55,7 @@ public class PrimeGeneratorTest {
     
     @Test
     public void testGeneratePrimes_Large(){
-        int n;
+        int n = 100;
         int[] expResult = readPrimesFromFile(n);
         int[] result = PrimeGenerator.generatePrimes(n);
         
@@ -71,6 +74,24 @@ public class PrimeGeneratorTest {
         System.out.println("isPrime");
         
         assertEquals(expResult, result);
+    }
+    
+    private int[] readPrimesFromFile(int n){
+       
+        int[] primes = new int[n];
+        
+        try{
+            Scanner scanner = new Scanner(new File("primeFiles/P-" + n + ".txt"));
+            for(int i = 0; i < n; i++){
+                primes[i] = Integer.valueOf(scanner.nextLine().split(", ")[1]);
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Couldn't find file");
+            e.printStackTrace();
+        }
+        
+       return primes; 
     }
     
 }
