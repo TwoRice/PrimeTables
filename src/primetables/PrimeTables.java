@@ -14,6 +14,15 @@ public class PrimeTables {
         int [] primes = PrimeGenerator.generatePrimes(n);
         int maxNoOfDigits = (int) Math.ceil(Math.log10(primes[n-1] * primes[n-1]));
                 
+        //This prints the first row of the prime table
+        System.out.print("|");
+        //Prints a blank for the first element in the table
+        System.out.format("%" + maxNoOfDigits*2 + "s", "");
+        for(int i = 0; i < primes.length; i++){
+            System.out.print("|");
+            System.out.format("% " + maxNoOfDigits*2 + "d", primes[i]);
+        }
+        
         for(int i = 0; i < primes.length; i++){
             int[] primeTableRow = generatePrimeTableRow(primes, i);
             System.out.println("");
@@ -23,10 +32,11 @@ public class PrimeTables {
     }
     
     public static int[] generatePrimeTableRow(int[] primes, int rowNo){
-        int[] primeTableRow = new int[primes.length];
+        int[] primeTableRow = new int[primes.length+1];
+        primeTableRow[0] = primes[rowNo];
         
-        for(int i = 0; i < primes.length; i++){
-            primeTableRow[i] = primes[i] * primes[rowNo];
+        for(int i = 1; i < primeTableRow.length; i++){
+            primeTableRow[i] = primes[i-1] * primes[rowNo];
         }
            
         return primeTableRow;
