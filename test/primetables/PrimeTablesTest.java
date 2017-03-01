@@ -24,12 +24,9 @@ public class PrimeTablesTest {
     @Test
     public void testGeneratePrimeTable() {
         int[] primes = {2, 3, 5};
-        int[][] expResult = {{1,2,3,5}, 
-                            {2,4,6,10},
-                            {3,6,9,15},
-                            {5,10,15,25}
-        };
-        int[][] result = PrimeTables.generatePrimeTable(primes);
+        int rowNo = 1;
+        int[] expResult = {6, 9, 15};
+        int[] result = PrimeTables.generatePrimeTableRow(primes, rowNo);
         
         System.out.println("generatePrimeTable");
 
