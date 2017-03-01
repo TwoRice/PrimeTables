@@ -12,47 +12,31 @@ public class PrimeTables {
     public static void main(String[] args) {
         int n = getInputN();
         int [] primes = PrimeGenerator.generatePrimes(n);
-        int[][] primeTable = generatePrimeTable(primes);
-        prettyPrintTable(primeTable);
+        int maxNoOfDigits = (int) Math.ceil(Math.log10(primes[n-1] * primes[n-1]));
+                
+        for(int i = 0; i < primes.length; i++){
+            int[] primeTableRow = generatePrimeTableRow(primes, i);
+            System.out.println("");
+            prettyPrintTableRow(primeTableRow, maxNoOfDigits);
+        }
+
     }
     
-    public static int[][] generatePrimeTable(int[] primes){
-        int[][] primeTable = new int[primes.length+1][primes.length+1];
-        primeTable[0][0] = 1;
+    public static int[] generatePrimeTableRow(int[] primes, int rowNo){
+        int[] primeTableRow = new int[primes.length];
         
         for(int i = 0; i < primes.length; i++){
-            primeTable[i+1][0] = primes[i];
-            primeTable[0][i+1] = primes[i];
-        }
-        
-        for(int i = 1; i <= primes.length; i++){
-            for(int j = 1; j <= primes.length; j++){
-                primeTable[i][j] = primes[i-1] * primes[j-1];
-            }
+            primeTableRow[i] = primes[i] * primes[rowNo];
         }
            
-        return primeTable;
+        return primeTableRow;
     }
     
-    public static void prettyPrintTable(int[][] primeTable){
-        
-        int maxNoOfDigits = (int) Math.ceil(Math.log10(primeTable[primeTable[0].length-1][primeTable[0].length-1]));
-        
-        System.out.print("|");
-        System.out.format("%" + maxNoOfDigits*2 + "s", "");
-        
-        for(int i = 0; i < primeTable[0].length-1; i++){
-            System.out.print("|");
-            System.out.format("% " + maxNoOfDigits*2 + "d", primeTable[i+1][0]);
-        }
-                
-        for(int i = 1; i < primeTable[0].length; i++){
-            System.out.println();
-            for(int j = 0; j < primeTable[0].length; j++){
+    public static void prettyPrintTableRow(int[] primeTableRow, int spaces){        
+        for(int i = 0; i < primeTableRow.length; i++){
                 System.out.print("|");
-                System.out.format("% " + maxNoOfDigits*2 + "d", primeTable[i][j]);
-            }        
-        }
+                System.out.format("% " + spaces*2 + "d", primeTableRow[i]);
+        }        
     }
     
     public static int getInputN(){
