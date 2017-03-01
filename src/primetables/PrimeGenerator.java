@@ -26,7 +26,7 @@ public class PrimeGenerator {
     
     public static boolean isPrime(int[] primes, int candidate){
         for(int i = 0; i < primes.length; i++){
-            if(candidate / primes[i] >= 3){
+            if(primes[i] <= Math.sqrt(candidate)){
                 if(candidate % primes[i] == 0){
                     return false;
                 }
