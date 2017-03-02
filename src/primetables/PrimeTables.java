@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package primetables;
+
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import java.util.Scanner;
 
@@ -12,10 +11,16 @@ public class PrimeTables {
     public static void main(String[] args) {        
         System.out.println("Enter no of generations: ");
         int n = getIntegerInput();
-        simpleMenu(n);
+        try{
+            simpleMenu(n);
+        }
+        catch(IOException e){
+            System.out.println("Unable to write to console");
+            e.printStackTrace();
+        }
     }
     
-    public static void printPrimeTable(int n){
+    public static void printPrimeTable(int n) throws IOException{
         PrimeGenerator p = new PrimeGenerator(n);
         int [] primes = p.generatePrimes(n);
         long largestPrime = (long) primes[n-1] * primes[n-1];
@@ -48,14 +53,17 @@ public class PrimeTables {
         return primeTableRow;
     }
     
-    public static void prettyPrintTableRow(long[] primeTableRow, int spaces){        
+    public static void prettyPrintTableRow(long[] primeTableRow, int spaces) throws IOException{        
+        OutputStream out = new BufferedOutputStream(System.out);
+        
         for(int i = 0; i < primeTableRow.length; i++){
+                out.write(("|" + (String.format("% " + spaces*2 + "d", primeTableRow[i]))).getBytes());
                 System.out.print("|");
                 System.out.format("% " + spaces*2 + "d", primeTableRow[i]);
         }        
     }
     
-    public static void simpleMenu(int n){
+    public static void simpleMenu(int n) throws IOException{
         int selection = 0;
         
         while (selection != 1 && selection != 2){
@@ -67,9 +75,10 @@ public class PrimeTables {
             switch(selection){
                 case 1:
                     PrimeGenerator p = new PrimeGenerator(n);
+                    OutputStream out = new BufferedOutputStream(System.out);
                     int [] primes = p.generatePrimes(n);
                     for(int i = 0; i < primes.length; i++){
-                        System.out.println(primes[i]);
+                        out.write((primes[i] + "\n").getBytes());
                     }
                     break;
                 case 2:
@@ -77,6 +86,7 @@ public class PrimeTables {
                     break;
                 default:
                     System.out.println("Invalid Selection");
+                    break;
             }
         }
     }
