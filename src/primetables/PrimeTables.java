@@ -31,24 +31,24 @@ public class PrimeTables {
         }
         
         for(int i = 0; i < primes.length; i++){
-            int[] primeTableRow = generatePrimeTableRow(primes, i);
+            long[] primeTableRow = generatePrimeTableRow(primes, i);
             System.out.println("");
             prettyPrintTableRow(primeTableRow, maxNoOfDigits);
         }
     }
     
-    public static int[] generatePrimeTableRow(int[] primes, int rowNo){
-        int[] primeTableRow = new int[primes.length+1];
+    public static long[] generatePrimeTableRow(int[] primes, int rowNo){
+        long[] primeTableRow = new long[primes.length+1];
         primeTableRow[0] = primes[rowNo];
         
         for(int i = 1; i < primeTableRow.length; i++){
-            primeTableRow[i] = primes[i-1] * primes[rowNo];
+            primeTableRow[i] = (long) primes[i-1] * primes[rowNo];
         }
            
         return primeTableRow;
     }
     
-    public static void prettyPrintTableRow(int[] primeTableRow, int spaces){        
+    public static void prettyPrintTableRow(long[] primeTableRow, int spaces){        
         for(int i = 0; i < primeTableRow.length; i++){
                 System.out.print("|");
                 System.out.format("% " + spaces*2 + "d", primeTableRow[i]);
