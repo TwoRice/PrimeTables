@@ -18,7 +18,8 @@ public class PrimeTables {
     public static void printPrimeTable(int n){
         PrimeGenerator p = new PrimeGenerator(n);
         int [] primes = p.generatePrimes(n);
-        int maxNoOfDigits = (int) Math.ceil(Math.log10(primes[n-1] * primes[n-1]));
+        long largestPrime = (long) primes[n-1] * primes[n-1];
+        int maxNoOfDigits = (int) Math.ceil(Math.log10(largestPrime));
                 
         //This prints the first row of the prime table
         System.out.print("|");
