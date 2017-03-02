@@ -5,9 +5,6 @@
  */
 package primetables;
 
-import java.util.Arrays;
-
-
 public class PrimeGenerator {
 
     int[] primes;

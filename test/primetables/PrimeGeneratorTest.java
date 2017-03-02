@@ -7,7 +7,6 @@ package primetables;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -58,7 +57,7 @@ public class PrimeGeneratorTest {
      */
     @Test
     public void testGeneratePrimes_Large(){
-        int n = 3;
+        int n = 1000000;
         PrimeGenerator instance = new PrimeGenerator(n);
         int[] expResult = readPrimesFromFile(n);
         int[] result = instance.generatePrimes(n);
