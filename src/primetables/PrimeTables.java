@@ -10,7 +10,12 @@ import java.util.Scanner;
 public class PrimeTables {
 
     public static void main(String[] args) {        
-        int n = getInputN();
+        System.out.println("Enter no of generations: ");
+        int n = getIntegerInput();
+        simpleMenu(n);
+    }
+    
+    public static void printPrimeTable(int n){
         PrimeGenerator p = new PrimeGenerator(n);
         int [] primes = p.generatePrimes(n);
         int maxNoOfDigits = (int) Math.ceil(Math.log10(primes[n-1] * primes[n-1]));
@@ -29,7 +34,6 @@ public class PrimeTables {
             System.out.println("");
             prettyPrintTableRow(primeTableRow, maxNoOfDigits);
         }
-
     }
     
     public static int[] generatePrimeTableRow(int[] primes, int rowNo){
@@ -50,11 +54,36 @@ public class PrimeTables {
         }        
     }
     
-    public static int getInputN(){
+    public static void simpleMenu(int n){
+        int selection = 0;
+        
+        while (selection != 1 && selection != 2){
+            System.out.println("1. Generate Primes");
+            System.out.println("2. Generate Prime Multiplication Table");
+            System.out.println("Enter Selection : ");
+            selection = getIntegerInput();
+            
+            switch(selection){
+                case 1:
+                    PrimeGenerator p = new PrimeGenerator(n);
+                    int [] primes = p.generatePrimes(n);
+                    for(int i = 0; i < primes.length; i++){
+                        System.out.println(primes[i]);
+                    }
+                    break;
+                case 2:
+                    printPrimeTable(n);
+                    break;
+                default:
+                    System.out.println("Invalid Selection");
+            }
+        }
+    }
+    
+    public static int getIntegerInput(){
         Scanner scanner = new Scanner(System.in);
         int n;
         
-        System.out.println("Enter no of generations: ");
         while(!scanner.hasNextInt()){
             scanner.next();
             System.out.println("Please only enter an integer value: ");
