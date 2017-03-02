@@ -20,13 +20,7 @@ public class PrimeGenerator {
     }
     
     public int[] generatePrimes(int n){        
-        //Calculates the approximate value for the nth prime. Used as an upper limit for the sieve
-        double dMax = (n*Math.log(n)) + (n*Math.log(Math.log(n)));
-        int max = (int) Math.ceil(dMax);
-        //The above algorithm only works for n >= 6.
-        if(n < 6){
-            max = 12;
-        }
+        int max = calculateSieveUpperLimit(n);
         int root = (int) Math.sqrt(max);
         int count = 1;
         boolean[] isPrime = new boolean[max-2];
@@ -51,6 +45,18 @@ public class PrimeGenerator {
         }
 
         return primes;
+    }
+    
+    public int calculateSieveUpperLimit(int n){
+        //Calculates the approximate value for the nth prime. Used as an upper limit for the sieve
+        double dMax = (n*Math.log(n)) + (n*Math.log(Math.log(n)));
+        int max = (int) Math.ceil(dMax);
+        //The above algorithm only works for n >= 6.
+        if(n < 6){
+            max = 12;
+        }
+        
+        return max;
     }
     
 //    public boolean isPrime(int candidate, int n){
