@@ -52,7 +52,7 @@ public class PrimeTables {
     }
     
     public static void prettyPrintTableRow(FileWriter fw, long[] primeTableRow, int spaces) throws IOException{                
-        for(int i = 0; i < primeTableRow.length-1; i++){
+        for(int i = 0; i < primeTableRow.length; i++){
             fw.write("|" + String.format("% " + spaces*2 + "d", primeTableRow[i]));
         }   
     }
