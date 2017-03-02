@@ -1,8 +1,7 @@
 package primetables;
 
-import java.io.BufferedOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import java.util.Scanner;
 
@@ -25,21 +24,20 @@ public class PrimeTables {
         int [] primes = p.generatePrimes(n);
         long largestPrime = (long) primes[n-1] * primes[n-1];
         int maxNoOfDigits = (int) Math.ceil(Math.log10(largestPrime));
+        FileWriter fw = new FileWriter("primeTable.txt");
                 
-        //This prints the first row of the prime table
-        System.out.print("|");
-        //Prints a blank for the first element in the table
-        System.out.format("%" + maxNoOfDigits*2 + "s", "");
+        fw.write("|" + String.format("%" + maxNoOfDigits*2 + "s", ""));
         for(int i = 0; i < primes.length; i++){
-            System.out.print("|");
-            System.out.format("% " + maxNoOfDigits*2 + "d", primes[i]);
+            fw.write("|" + String.format("% " + maxNoOfDigits*2 + "d", primes[i]));
         }
         
         for(int i = 0; i < primes.length; i++){
             long[] primeTableRow = generatePrimeTableRow(primes, i);
-            System.out.println("");
-            prettyPrintTableRow(primeTableRow, maxNoOfDigits);
+            fw.write(System.lineSeparator());
+            prettyPrintTableRow(fw, primeTableRow, maxNoOfDigits);
         }
+        fw.flush();
+        fw.close();
     }
     
     public static long[] generatePrimeTableRow(int[] primes, int rowNo){
@@ -53,12 +51,10 @@ public class PrimeTables {
         return primeTableRow;
     }
     
-    public static void prettyPrintTableRow(long[] primeTableRow, int spaces) throws IOException{        
-        OutputStream out = new BufferedOutputStream(System.out);
-        
+    public static void prettyPrintTableRow(FileWriter fw, long[] primeTableRow, int spaces) throws IOException{                
         for(int i = 0; i < primeTableRow.length; i++){
-                out.write(("|" + (String.format("% " + spaces*2 + "d", primeTableRow[i]))).getBytes());
-        }        
+            fw.write("|" + String.format("% " + spaces*2 + "d", primeTableRow[i]));
+        }   
     }
     
     public static void simpleMenu(int n) throws IOException{
@@ -73,11 +69,13 @@ public class PrimeTables {
             switch(selection){
                 case 1:
                     PrimeGenerator p = new PrimeGenerator(n);
-                    OutputStream out = new BufferedOutputStream(System.out);
+                    FileWriter fw = new FileWriter("generatedPrimes.txt");
                     int [] primes = p.generatePrimes(n);
                     for(int i = 0; i < primes.length; i++){
-                        out.write((primes[i] + "\n").getBytes());
+                        fw.write(primes[i] + System.lineSeparator());
                     }
+                    fw.flush();
+                    fw.close();
                     break;
                 case 2:
                     printPrimeTable(n);
