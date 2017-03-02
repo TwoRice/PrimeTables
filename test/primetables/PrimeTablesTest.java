@@ -25,7 +25,7 @@ public class PrimeTablesTest {
     public void testGeneratePrimeTable() {
         int[] primes = {2, 3, 5};
         int rowNo = 1;
-        int[] expResult = {6, 9, 15};
+        int[] expResult = {3, 6, 9, 15};
         int[] result = PrimeTables.generatePrimeTableRow(primes, rowNo);
         
         System.out.println("generatePrimeTable");
