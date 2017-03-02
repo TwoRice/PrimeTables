@@ -32,8 +32,10 @@ public class PrimeGenerator {
     }
     
     public boolean isPrime(int candidate, int n){
+        double root = Math.sqrt(candidate);
+        
         for(int i = 0; i < n-1; i++){
-            if(primes[i] <= Math.sqrt(candidate)){
+            if(primes[i] <= root){
                 if(candidate % primes[i] == 0){
                     return false;
                 }
