@@ -43,10 +43,10 @@ public class PrimeGeneratorTest {
 
     @Test
     public void testGeneratePrimes_Small() {
-        int startIndex = 4;
-        int endIndex = 10;
-        int[] expResult = {11, 13, 17, 19, 23, 29};
-        int[] result = Arrays.copyOfRange(PrimeGenerator.generatePrimes(endIndex), startIndex, endIndex);
+        int[] expResult = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+        int n = expResult.length;
+        PrimeGenerator instance = new PrimeGenerator(n);
+        int[] result = instance.generatePrimes(n);
         
         System.out.println("generatePrimes_Small");
         
@@ -58,9 +58,10 @@ public class PrimeGeneratorTest {
      */
     @Test
     public void testGeneratePrimes_Large(){
-        int n = 100;
+        int n = 1000000;
+        PrimeGenerator instance = new PrimeGenerator(n);
         int[] expResult = readPrimesFromFile(n);
-        int[] result = PrimeGenerator.generatePrimes(n);
+        int[] result = instance.generatePrimes(n);
         
         System.out.println("generatePrime_Large");
         
@@ -69,10 +70,11 @@ public class PrimeGeneratorTest {
 
     @Test
     public void testIsPrime() {
+        int[] primes = {2, 3, 5, 7}; 
+        PrimeGenerator instance = new PrimeGenerator(primes.length);
         int testNo = 11;
-        int[] primes = {3, 5, 7};
         boolean expResult = true;
-        boolean result = PrimeGenerator.isPrime(primes, testNo);
+        boolean result = instance.isPrime(testNo, 3);
         
         System.out.println("isPrime");
         
