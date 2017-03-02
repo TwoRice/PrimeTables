@@ -9,9 +9,10 @@ import java.util.Scanner;
 
 public class PrimeTables {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
         int n = getInputN();
-        int [] primes = PrimeGenerator.generatePrimes(n);
+        PrimeGenerator p = new PrimeGenerator(n);
+        int [] primes = p.generatePrimes(n);
         int maxNoOfDigits = (int) Math.ceil(Math.log10(primes[n-1] * primes[n-1]));
                 
         //This prints the first row of the prime table
