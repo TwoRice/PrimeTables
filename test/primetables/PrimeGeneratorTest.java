@@ -67,6 +67,18 @@ public class PrimeGeneratorTest {
         
         assertArrayEquals(expResult, result);
     }
+    
+    @Test
+    public void testCalculateSieveUpperLimit(){
+        int n = 1000;
+        PrimeGenerator instance = new PrimeGenerator(n);
+        int result = instance.calculateSieveUpperLimit(n);
+        int expResult = 8841;
+        
+        System.out.println("calculateSieveUpperLimit");
+        
+        assertEquals(expResult, result);
+    }
 
 //    @Test
 //    public void testIsPrime() {
