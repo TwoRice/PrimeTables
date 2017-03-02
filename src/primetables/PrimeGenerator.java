@@ -22,9 +22,11 @@ public class PrimeGenerator {
     
     public int[] generatePrimes(int n){        
         for(int i = 5, j = 2; j < n; i+=2){
-            if(isPrime(i, j)){
-                primes[j] = i;
-                j++;
+            if(i % 6 == 1 || i % 6 == 5){
+                if(isPrime(i, j)){
+                    primes[j] = i;
+                    j++;
+                }
             }
         }
         
