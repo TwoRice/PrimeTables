@@ -7,7 +7,6 @@ package primetables;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -67,19 +66,31 @@ public class PrimeGeneratorTest {
         
         assertArrayEquals(expResult, result);
     }
-
+    
     @Test
-    public void testIsPrime() {
-        int[] primes = {2, 3, 5, 7}; 
-        PrimeGenerator instance = new PrimeGenerator(primes.length);
-        int testNo = 11;
-        boolean expResult = true;
-        boolean result = instance.isPrime(testNo, 3);
+    public void testCalculateSieveUpperLimit(){
+        int n = 1000;
+        PrimeGenerator instance = new PrimeGenerator(n);
+        int result = instance.calculateSieveUpperLimit(n);
+        int expResult = 8841;
         
-        System.out.println("isPrime");
+        System.out.println("calculateSieveUpperLimit");
         
         assertEquals(expResult, result);
     }
+
+//    @Test
+//    public void testIsPrime() {
+//        int[] primes = {2, 3, 5, 7}; 
+//        PrimeGenerator instance = new PrimeGenerator(primes.length);
+//        int testNo = 11;
+//        boolean expResult = true;
+//        boolean result = instance.isPrime(testNo, 3);
+//        
+//        System.out.println("isPrime");
+//        
+//        assertEquals(expResult, result);
+//    }
     
     /**
      * Reads up to a million primes from a selection of files 
