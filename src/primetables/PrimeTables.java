@@ -58,8 +58,6 @@ public class PrimeTables {
         
         for(int i = 0; i < primeTableRow.length; i++){
                 out.write(("|" + (String.format("% " + spaces*2 + "d", primeTableRow[i]))).getBytes());
-                System.out.print("|");
-                System.out.format("% " + spaces*2 + "d", primeTableRow[i]);
         }        
     }
     
