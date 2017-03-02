@@ -1,6 +1,7 @@
 package primetables;
 
 import java.io.BufferedOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -75,11 +76,13 @@ public class PrimeTables {
             switch(selection){
                 case 1:
                     PrimeGenerator p = new PrimeGenerator(n);
-                    OutputStream out = new BufferedOutputStream(System.out);
+                    FileWriter fw = new FileWriter("generatedPrimes.txt");
                     int [] primes = p.generatePrimes(n);
                     for(int i = 0; i < primes.length; i++){
-                        out.write((primes[i] + "\n").getBytes());
+                        fw.write(primes[i] + System.lineSeparator());
                     }
+                    fw.flush();
+                    fw.close();
                     break;
                 case 2:
                     printPrimeTable(n);
