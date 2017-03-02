@@ -7,7 +7,7 @@ first trying a BufferedOutputSteam to the console as the PrintStream was incredi
 write the output to a text file as this proved much faster.
 
 <b>INSTRUCTIONS:</b><br/>
-1. Run the Executable Jar file from the build folder<br/>
+1. Download and run the Executable Jar file found in the build folder or in the releases section<br/>
 2. Enter the number of generations of primes you would like<br/>
 3. Enter 1 or 2 to choose whether you would like to output a list of the prime numbers or the prime multiplication table, respectively.<br/>
 4. A text file will be created in the folder you ran the jar from called either generatedPrimes.txt or primeTable.txt, open it to view the output<br/>
