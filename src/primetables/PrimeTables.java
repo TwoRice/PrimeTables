@@ -38,7 +38,7 @@ public class PrimeTables {
         }
         fw.flush();
         fw.close();
-        System.out.println("Output to primeTable.txt");
+        System.out.println("Output to file primeTable.txt");
     }
     
     public static long[] generatePrimeTableRow(int[] primes, int rowNo){
@@ -77,7 +77,7 @@ public class PrimeTables {
                     }
                     fw.flush();
                     fw.close();
-                    System.out.println("Output to generatedPrimes.txt");
+                    System.out.println("Output to file generatedPrimes.txt");
                     break;
                 case 2:
                     printPrimeTable(n);
