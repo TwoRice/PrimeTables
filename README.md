@@ -26,4 +26,5 @@ solution. Generating primes is fast enough, but calculating and printing the mul
 100% sure if huge prime tables will format correctly as I don't know if the text editors I have mentioned have max line lengths. My
 solution of outputting to file is also flawed as with large prime tables you recieve huge text files, so to find a better balance would be
 nice.<br/>
-3. Unit tested my outputting solution. As I mentioned that I rushed the solution for this I didn't get the chance to unit test it.
+3. Unit tested my outputting solution. As I mentioned that I rushed the solution for this I didn't get the chance to unit test it.<br/>
+4. Used C/C++ instead of java for potentially increased performance.
